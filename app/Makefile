@@ -24,6 +24,7 @@ OBJCOPY=arm-none-eabi-objcopy
 ###########################################
 
 INCLUDES+= -I $(ROOT_DIR)/app/Inc/
+INCLUDES+= -I $(ROOT_DIR)/drivers/Inc/
 
 ############################################
 # 				SOURCE FILES
@@ -32,6 +33,8 @@ INCLUDES+= -I $(ROOT_DIR)/app/Inc/
 OBJS		+= $(BUILD_DIR)/main.o
 OBJS		+= $(BUILD_DIR)/syscalls.o
 OBJS		+= $(BUILD_DIR)/startup.o
+
+DRIVERS		+= $(BUILD_DIR)/driver_gpio.o
 
 PREREQ = $(BUILD_DIR)/
 
@@ -42,6 +45,9 @@ $(PREREQ):
 
 $(BUILD_DIR)/%.o: $(ROOT_DIR)/app/Src/%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(BUILD_DIR)/$(*).o $(ROOT_DIR)/app/Src/$(*).c
+
+$(BUILD_DIR)/%.o: $(ROOT_DIR)/drivers/Src/%.c
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(BUILD_DIR)/$(*).o $(ROOT_DIR)/drivers/Src/$(*).c
 
 $(BUILD_DIR)/%.o: $(ROOT_DIR)/linkers/*.c
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(BUILD_DIR)/$(*).o $(ROOT_DIR)/linkers/$(*).c
