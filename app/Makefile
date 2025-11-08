@@ -58,5 +58,8 @@ $(BUILD_DIR)/$(TARGET).elf: $(OBJS) $(DRIVERS) $(SHARED) $(INTERFACE)
 	$(OBJCOPY) -O binary $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).bin
 	arm-none-eabi-size $(BUILD_DIR)/$(TARGET).elf
 
+load:
+	jlink flash.jlink
+
 clean:
 	rm -rf $(BUILD_DIR)/*.map $(BUILD_DIR)/*.o
