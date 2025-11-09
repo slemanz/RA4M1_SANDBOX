@@ -11,6 +11,6 @@ int main(void)
     while(1)
     {
         GPIO_ToggleOutputPin(PORT1, GPIO_PIN_NO_11);
-        for(uint32_t i = 0; i < 30000; i++) __asm("NOP");
+        for(uint32_t i = 0; i < 50000; i++) __asm("NOP");
     }
 }
