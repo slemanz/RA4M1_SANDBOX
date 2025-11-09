@@ -41,7 +41,9 @@ typedef struct
 #define GPIO_PIN_NO_15	        15
 
 #define GPIO_PFSWE_OFFSET       6
+#define GPIO_B0WI_OFFSET        7
 #define GPIO_PFSWE_MASK         (1U << GPIO_PFSWE_OFFSET)
+#define GPIO_B0WI_MASK          (1U << GPIO_B0WI_OFFSET)
 
 /*
  * @GPIO_PIN_MODE
@@ -66,7 +68,7 @@ typedef struct
  * GPIO pin possible modes
  */
 
-#define GPIO_PIN_OP_TYPE_CMOS   1
+#define GPIO_PIN_OP_TYPE_CMOS   0
 #define GPIO_PIN_OP_TYPE_NMOS   1   // open-drain
 
 /*
