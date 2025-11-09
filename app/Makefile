@@ -31,6 +31,7 @@ INCLUDES+= -I $(ROOT_DIR)/drivers/Inc/
 ############################################
 
 OBJS		+= $(BUILD_DIR)/main.o
+OBJS		+= $(BUILD_DIR)/config.o
 OBJS		+= $(BUILD_DIR)/syscalls.o
 OBJS		+= $(BUILD_DIR)/startup.o
 
