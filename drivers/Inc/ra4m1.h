@@ -7,9 +7,12 @@
 
 #define __vo volatile
 #define MMIO32(addr) (*(volatile uint32_t *)(addr))
+#define MMIO16(addr)  (*(volatile uint16_t *)(addr))
 #define MMIO8(addr)  (*(volatile uint8_t *)(addr))
 
 /************************** BASE ADDRESSES **************************/
+
+
 
 #define PWPR_BASEADDR               0x40040D03UL
 #define PFS_BASEADDR                0x40040800UL
@@ -21,6 +24,25 @@
 #define SCS_BASE            				(0xE000E000UL)
 #define SYSTICK_BASEADDR					(SCS_BASE + 0x0010UL)
 
+/************************** REG ADDRESSES ***************************/
+
+// Write Protection
+#define REG_PRCR_ADDRESS            0x4001E3FEUL
+
+// Clock
+#define REG_SCKDIVCR_ADDRESS        0x4001E020UL
+#define REG_SCKSCR_ADDRESS          0x4001E026UL
+#define REG_MEMWAIT_ADDRESS         0x4001E031UL
+#define REG_HOCOCR_ADDRESS          0x4001E036UL
+
+/*********************** OFFSET DEFINITIONS *************************/
+
+#define SCKDIVCR_FCK_OFFSET         28
+#define SCKDIVCR_ICK_OFFSET         24
+#define SCKDIVCR_PCKA_OFFSET        12
+#define SCKDIVCR_PCKB_OFFSET        8
+#define SCKDIVCR_PCKC_OFFSET        4
+#define SCKDIVCR_PCKD_OFFSET        0
 
 /*********************** STRUCTS DEFINITIONS ************************/
 
@@ -55,5 +77,7 @@ typedef struct
 
 #define INTERRUPT_ENABLE()          do{__asm volatile ("MOV R0, #0x0"); __asm volatile("MSR PRIMASK, R0");}while(0)
 #define INTERRUPT_DISABLE()         do{__asm volatile ("MOV R0, #0x1"); __asm volatile("MSR PRIMASK, R0");}while(0)
+
+#define PRCR_KEY_CODE               0xA500
 
 #endif /* INC_RA4M1_H_ */
